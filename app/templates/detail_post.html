@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block head_title %}{{ block.super }} - Post Detail {% endblock head_title %}
+
+{% block content %}
+<br>
+<div class="card text-center">
+  <div class="card-header">
+    The Social Site
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{post.title}}</h5>
+    <p class="card-text">{{post.content}}</p>
+    <p class="card-text">{{post.author}}</p>
+  </div>
+  <div class="card-footer text-muted">
+    <p class="card-text">Publish on: {{post.publish_on}}</p>
+  </div>
+</div>
+
+{% endblock content %}

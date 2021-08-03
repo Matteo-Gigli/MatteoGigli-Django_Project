@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block head_title %}{{ block.super }} - Write a Post {% endblock head_title %}
+
+{% block content %}
+<body style="text-align:center;">
+    <br>
+    <div class="card text-center">
+        <div class="card-header">
+            The Social Site
+        </div>
+        <div class="card-body">
+            {% if user.is_authenticated %}
+                <h1> Write a Post Now</h1>
+                <br>
+                <form  method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <input type="submit" class="button btn-info" value="Publish Now">
+                    {% endif %}
+                </form>
+        </div>
+  </div>
+</body>
+{% endblock content %}
+

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block head_title %}{{ block.super }} - Find in Site {% endblock head_title %}
+
+{% block content %}
+
+<body style="text-align:center;">
+    <br>
+    <div class="card text-center">
+        <div class="card-header">
+            The Social Site
+        </div>
+    <div class="card-body">
+        {% if user.is_authenticated %}
+            <h1>Result</h1>
+            <br>
+            <br>
+            <p>This word is in {{content}} Post </p>
+        {% endif %}
+    </div>
+    </div>
+</body>
+{% endblock content %}

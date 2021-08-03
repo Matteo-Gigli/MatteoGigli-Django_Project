@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block head_title %}{{ block.super }} - Counting Post {% endblock head_title %}
+
+{% block content %}
+
+<body style="text-align:center;">
+
+    {% if request.user.is_staff %}
+    <br>
+    <div class="card text-center">
+        <div class="card-header">
+            The Social Site
+        </div>
+    <div class="card-body">
+        {% for post in post %}
+        <h5 class="card-title">{{post}}</h5>
+        {% endfor %}
+    </div>
+    </div>
+</body>
+{% endif %}
+{% endblock content %}

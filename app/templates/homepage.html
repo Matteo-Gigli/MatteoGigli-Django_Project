@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block head_title %}{{ block.super }} - Homepage {% endblock head_title %}
+
+{% block content %}
+<h2 style="text-align:center;">Welcome in 'The Social Site' {{request.user}}</h2>
+<br>
+{% for section in object_list %}
+{% if request.user.is_staff %}
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body" style="text-align:center;">
+        <h5 class="card-title">Author</h5>
+        <p><strong>{{section.author}}</strong></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body" style="text-align:center;">
+        <h5 class="card-title">Title: <a href="{{section.get_absolute_url}}">{{section.title}}</a></h5>
+        <p class="card-text">Publish On: {{section.publish_on}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body" style="text-align:center;">
+        <h5 class="card-title">Author</h5>
+        <p><strong>{{section.author}}</strong></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body" style="text-align:center;">
+        <h5 class="card-title">Title: <a href="{{section.get_absolute_url}}">{{section.title}}</a></h5>
+        <p class="card-text">Content: {{section.content}}</p>
+        <p class="card-text">Publish On: {{section.publish_on}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<br><br>
+<hr>
+
+{% endfor %}
+
+{% endblock content %}
+
